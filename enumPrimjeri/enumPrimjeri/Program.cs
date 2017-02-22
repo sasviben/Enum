@@ -9,8 +9,14 @@ namespace enumPrimjeri
     class Customer
     {
         public string Name { get; set;}
-        public int Gander { get; set; }
+        public Gender Gander { get; set; }
     }
+    public enum Gender
+    {
+        Unknown = 0,
+        Male = 1,
+        Female = 2
+    };
     class Program
     {
         static void Main(string[] args)
@@ -19,17 +25,17 @@ namespace enumPrimjeri
             customers[0] = new Customer()
             {
                 Name = "Sandro",
-                Gander = 1
+                Gander = Gender.Male
             };
             customers[1] = new Customer()
             {
                 Name = "Jelena",
-                Gander = 2
+                Gander = Gender.Female
             };
             customers[2] = new Customer()
             {
                 Name = "Saša",
-                Gander = 0
+                Gander = Gender.Unknown
             };
 
             foreach(Customer customer in customers)
@@ -37,15 +43,15 @@ namespace enumPrimjeri
                 Console.WriteLine("Name = {0} && Gender = {1}", customer.Name, GetGander(customer.Gander));
             }
         }
-        public static string GetGander(int gender)
+        public static string GetGander(Gender gender)
         {
             switch (gender)
             {
-                case 0:
+                case Gender.Unknown:
                     return "Unknown";
-                case 1:
+                case Gender.Male:
                     return "Male";
-                case 2:
+                case Gender.Female:
                     return "Female";
                 default:
                     return "Invalid expresion";
